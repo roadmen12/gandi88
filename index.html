@@ -1,46 +1,90 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>Form Pendaftaran Pekerja - PT Petani Muda</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-        }
-        form {
-            background: #fff;
-            padding: 20px;
-            width: 400px;
-            margin: 40px auto;
-            border-radius: 8px;
-        }
-        input, textarea, button {
-            width: 100%;
-            margin-top: 10px;
-            padding: 8px;
-        }
-        button {
-            background: green;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Form Lamaran Kerja | PT Petani Muda</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e8f5e9;
+    }
+    .container {
+      background: white;
+      max-width: 420px;
+      margin: 40px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #2e7d32;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #2e7d32;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1b5e20;
+    }
+    label {
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
 
-<form action="http://localhost:3000/kirim" method="POST">
-    <h2>Pendaftaran Pekerja<br>PT Petani Muda</h2>
+<div class="container">
+  <h2>Form Lamaran Kerja<br>PT Petani Muda</h2>
 
-    <input type="text" name="nama" placeholder="Nama Lengkap" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="text" name="telepon" placeholder="No. Telepon" required>
-    <input type="text" name="posisi" placeholder="Posisi yang Dilamar" required>
-    <textarea name="alamat" placeholder="Alamat Lengkap" required></textarea>
+  <form onsubmit="kirimWA(); return false;">
+    <input type="text" id="nama" placeholder="Nama Lengkap" required>
+    <input type="text" id="alamat" placeholder="Alamat" required>
+    <input type="text" id="posisi" placeholder="Posisi Dilamar" required>
+    <input type="tel" id="hp" placeholder="Nomor WhatsApp" required>
+    <textarea id="alasan" placeholder="Alasan Melamar" required></textarea>
 
-    <button type="submit">Daftar</button>
-</form>
+    <label>
+      <input type="checkbox" required>
+      Saya setuju data saya dikirim ke HR PT Petani Muda melalui WhatsApp
+    </label>
+
+    <button type="submit">Kirim Lamaran</button>
+  </form>
+</div>
+
+<script>
+function kirimWA() {
+  var nama   = document.getElementById("nama").value;
+  var alamat = document.getElementById("alamat").value;
+  var posisi = document.getElementById("posisi").value;
+  var hp     = document.getElementById("hp").value;
+  var alasan = document.getElementById("alasan").value;
+
+  var nomorHR = "628XXXXXXXXXX"; // GANTI dengan nomor WhatsApp kamu
+
+  var pesan =
+    "LAMARAN KERJA PT PETANI MUDA\n\n" +
+    "Nama: " + nama + "\n" +
+    "Alamat: " + alamat + "\n" +
+    "Posisi: " + posisi + "\n" +
+    "No HP: " + hp + "\n\n" +
+    "Alasan:\n" + alasan;
+
+  var url = "https://wa.me/" + nomorHR + "?text=" + encodeURIComponent(pesan);
+  window.open(url, "_blank");
+}
+</script>
 
 </body>
 </html>
