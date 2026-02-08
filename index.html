@@ -2,26 +2,45 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Tebak Angka</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Form Pendaftaran Pekerja - PT Petani Muda</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            width: 400px;
+            margin: 40px auto;
+            border-radius: 8px;
+        }
+        input, textarea, button {
+            width: 100%;
+            margin-top: 10px;
+            padding: 8px;
+        }
+        button {
+            background: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>Tebak Angka 🎯</h1>
-    <p>Tebak angka dari 1 sampai 10</p>
+<form action="http://localhost:3000/kirim" method="POST">
+    <h2>Pendaftaran Pekerja<br>PT Petani Muda</h2>
 
-    <input type="number" id="guess" placeholder="Masukkan angka">
-    <button onclick="checkNumber()">Tebak!</button>
+    <input type="text" name="nama" placeholder="Nama Lengkap" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="telepon" placeholder="No. Telepon" required>
+    <input type="text" name="posisi" placeholder="Posisi yang Dilamar" required>
+    <textarea name="alamat" placeholder="Alamat Lengkap" required></textarea>
 
-    <p id="message"></p>
-</div>
+    <button type="submit">Daftar</button>
+</form>
 
-<script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
